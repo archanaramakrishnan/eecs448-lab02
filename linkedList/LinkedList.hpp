@@ -104,7 +104,7 @@ bool LinkedList<T>::removeBack()
 	Node<T>* secondintoLast = nullptr;
 	bool isRemoved = false;
 
-	Node<T>* temp = m_front;
+	Node<T>* temp = m_front;	//set temp variable to the front node
 
 	if(temp==nullptr)	//if nothing to remove
 	{
@@ -120,20 +120,21 @@ bool LinkedList<T>::removeBack()
 
 	else
 	{
-		//traverse through the list and reach the end
+		//traverse through the list and reach the end by iteratively getting next of the temp
 		for(int i=1; i<m_size; i++)
 		{
 			temp=temp->getNext();
 		}
-		delete temp;
-		m_size=m_size-1;
+		delete temp;	//delete the last node
+		m_size=m_size-1;	//reduce the size by one
 
-		temp=m_front;
+		temp=m_front;	//reset temp to be equal to the front node
+		//traverse through the list again
 		for(int i=1; i<m_size; i++)
 		{
 			temp=temp->getNext();
 		}
-		temp->setNext(nullptr);
+		temp->setNext(nullptr);	//set last node to null
 		isRemoved=true;
 	}
 
